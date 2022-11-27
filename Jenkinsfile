@@ -5,8 +5,8 @@ pipeline {
 	}
 	
 	environment {
-		PROJECT_ID = 'steel-pod-365713'
-                CLUSTER_NAME = 'cluster-3'
+		PROJECT_ID = 'proven-impact-367208'
+                CLUSTER_NAME = 'mycluster'
                 LOCATION = 'us-central1-c'
                 CREDENTIALS_ID = 'Kubernetes'		
 	}
