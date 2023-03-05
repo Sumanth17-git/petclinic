@@ -8,7 +8,7 @@ pipeline {
 		PROJECT_ID = 'root-furnace-374507'
                 CLUSTER_NAME = 'cluster-1'
                 LOCATION = 'us-central1-c'
-                CREDENTIALS_ID = 'Kubernetes'		
+                CREDENTIALS_ID = 'kubernetes'		
 	}
 	
     stages {
