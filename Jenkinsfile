@@ -5,8 +5,8 @@ pipeline {
 	}
 	
 	environment {
-		PROJECT_ID = 'root-furnace-374507'
-                CLUSTER_NAME = 'cluster-1'
+		PROJECT_ID = 'grand-harbor-391707'
+                CLUSTER_NAME = 'perftesting'
                 LOCATION = 'us-central1-c'
                 CREDENTIALS_ID = 'kubernetes'		
 	}
