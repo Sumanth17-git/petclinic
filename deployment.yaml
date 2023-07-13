@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: springweb
-          image: sumanth17121988/petclinic:5
+          image: sumanth17121988/petclinic:tagversion
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
