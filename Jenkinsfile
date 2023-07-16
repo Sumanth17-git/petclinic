@@ -24,6 +24,7 @@ pipeline {
 			    sh 'ls -ltr'
 			    sh 'pwd'
 			    sh 'cd ${WORKSPACE}/scripts'
+                            sh 'ls -ltr'
 			    sh '/home/perftest186/apache-jmeter-5.6.2/bin/jmeter.sh -n -t petstore.jmx -l petstore.jtl'
 		    }
 	    }
