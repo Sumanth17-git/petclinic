@@ -32,3 +32,5 @@ pipeline {
                                 perfReport 'petstore.csv'
     }
 }
+    }
+}
