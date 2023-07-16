@@ -25,8 +25,13 @@ pipeline {
 			    sh 'pwd'
 			    sh 'cd ${WORKSPACE}/scripts'
                             sh 'ls -ltr'
-			    sh '/home/perftest186/apache-jmeter-5.6.2/bin/jmeter.sh -n -t petstore.jmx -l petstore.jtl'
+			    sh '/home/perftest186/apache-jmeter-5.6.2/bin/jmeter.sh -n -t petstore.jmx -l petstore.csv'
 		    }
-	    }
+           stage('Analyse Performance Results') {
+                        dir("${WORKSPACE}") {
+			        sh 'pwd'
+                                perfReport 'petstore.csv'
+        }
+      }
     }
 }
