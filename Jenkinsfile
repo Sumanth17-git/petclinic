@@ -29,8 +29,7 @@ pipeline {
             stage('Analyse Performance Results') {
                         steps{
 			        sh 'pwd'
-                                perfReport 'petstore.csv'
-                             }
+                                perfReport compareBuildPrevious: true, filterRegex: '', ignoreFailedBuilds: true, ignoreUnstableBuilds: true, modeOfThreshold: true,relativeFailedThresholdPositive: 80.0, relativeUnstableThresholdPositive: 80.0, sourceDataFiles: 'petstore.csv'                             }
         }
     }
 }
