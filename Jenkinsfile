@@ -27,10 +27,10 @@ pipeline {
 		    }
 	    }
             stage('Analyse Performance Results') {
-                        dir("${WORKSPACE}") {
+                        steps{
 			        sh 'pwd'
                                 perfReport 'petstore.csv'
-    }
-}
+                             }
+        }
     }
 }
