@@ -57,6 +57,22 @@ pipeline {
 			    echo "Deployment Finished ..."
 		    }
 	    }
+           stage('Performance tests') {
+		    steps{
+			    echo "Performance testing is started ..."
+			    sh 'ls -ltr'
+			    sh 'pwd'
+			    sh '/home/perftest186/apache-jmeter-5.6.2/bin/jmeter.sh -n -t petstore.jmx -l petstore.csv'
+                             echo "Performance testing is Completed..."
+		    }
+	    }
+            stage('Analyse Performance Results') {
+                        steps{
+			        sh 'pwd'
+                                 echo "Performance Test Report is getting ready"
+                                perfReport compareBuildPrevious: true, filterRegex: '', ignoreFailedBuilds: true, ignoreUnstableBuilds: true, modeOfThreshold: true,relativeFailedThresholdPositive: 80.0, relativeUnstableThresholdPositive: 80.0, sourceDataFiles: 'petstore.csv'                          
+                        }
+                }
             
             }
     }
