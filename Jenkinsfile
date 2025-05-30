@@ -28,7 +28,7 @@ pipeline {
 		    steps {
 			    sh 'whoami'
 			    script {
-				    myimage = docker.build("sumanth17121988/petclinic:${env.BUILD_ID}")
+				    myimage = docker.build("sumanth17121988/springboot_petclinic:${env.BUILD_ID}")
 			    }
 		    }
 	    }
