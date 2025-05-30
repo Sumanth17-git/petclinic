@@ -5,8 +5,8 @@ pipeline {
 	}
 	
 	environment {
-		PROJECT_ID = 'grand-harbor-391707'
-                CLUSTER_NAME = 'perftesting'
+		PROJECT_ID = 'dynatrace-fiserv'
+                CLUSTER_NAME = 'cluster-1'
                 LOCATION = 'us-central1-c'
                 CREDENTIALS_ID = 'kubernetes'		
 	}
