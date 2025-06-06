@@ -57,12 +57,6 @@ pipeline {
 			    echo "Deployment Finished ..."
 		    }
 	    }
-            stage('Setup JMeter Permissions') {
-            steps {
-                echo "Fixing JMeter binary permissions..."
-                sh 'sudo chmod -R +x /home/sumanth_suman17/apache-jmeter-5.6.3/bin'
-                  }
-           }
            stage('Performance tests') {
 		    steps{
 			    echo "Performance testing is started ..."
