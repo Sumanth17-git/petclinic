@@ -59,14 +59,23 @@ pipeline {
 	    }
             
            stage('Performance tests') {
-		    steps{
-			    echo "Performance testing is started ..."
-			    sh 'ls -ltr'
-			    sh 'pwd'
-			    sh 'sh /var/lib/jenkins/jmeter/bin/jmeter -n -t /var/lib/jenkins/jmeter/petstore_latest.jmx -JHost=35.223.207.98 -f -l petstore.csv'
-                             echo "Performance testing is Completed..."
-		    }
-	    }
+                    steps {
+                        echo "Performance testing is started ..."
+                script {
+                    // Get the external IP of the springboot-service
+                    def externalIp = sh(
+                        script: "kubectl get svc springweb-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}'",
+                        returnStdout: true
+                    ).trim()
+        
+                    echo "Detected External IP: ${externalIp}"
+        
+                    // Run JMeter test with dynamic host
+                    sh "/var/lib/jenkins/jmeter/bin/jmeter -n -t /var/lib/jenkins/jmeter/petstore_latest.jmx -JHost=${externalIp} -f -l petstore.csv"
+                }
+                echo "Performance testing is Completed..."
+            }
+        }
             stage('Analyse Performance Results') {
                         steps{
 			        sh 'pwd'
