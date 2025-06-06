@@ -57,6 +57,7 @@ pipeline {
 			    echo "Deployment Finished ..."
 		    }
 	    }
+            
            stage('Performance tests') {
 		    steps{
 			    echo "Performance testing is started ..."
