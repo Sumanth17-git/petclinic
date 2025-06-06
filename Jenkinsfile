@@ -31,8 +31,7 @@ pipeline {
 				    myimage = docker.build("sumanth17121988/springboot_petclinic:${env.BUILD_ID}")
 			    }
 		    }
-	    }
-	    
+	    }    
 	    stage("Push Docker Image") {
 		    steps {
 			    script {
@@ -56,8 +55,7 @@ pipeline {
 			    step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deployment.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
 			    echo "Deployment Finished ..."
 		    }
-	    }
-            
+	    }         
 stage('Performance tests') {
     steps {
         echo "Performance testing is started ..."
