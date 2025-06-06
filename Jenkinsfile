@@ -61,28 +61,11 @@ pipeline {
 stage('Performance tests') {
     steps {
         echo "Performance testing is started ..."
-        script {
-            // Authenticate to GKE cluster so kubectl works
-            sh """
-                gcloud container clusters get-credentials ${env.CLUSTER_NAME} \
-                --zone ${env.LOCATION} \
-                --project ${env.PROJECT_ID}
-            """
-
-            // Get external IP of the service
-            def externalIp = sh(
-                script: "kubectl get svc springweb-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}'",
-                returnStdout: true
-            ).trim()
-
-            echo "Detected External IP: ${externalIp}"
-
-            // Run JMeter test with dynamic Host
-            sh "/var/lib/jenkins/jmeter/bin/jmeter -n -t /var/lib/jenkins/jmeter/petstore_latest.jmx -JHost=${externalIp} -f -l petstore.csv"
-        }
+        sh '/var/lib/jenkins/jmeter/bin/jmeter -n -t /var/lib/jenkins/jmeter/petstore_latest.jmx -JHost=34.44.191.231 -f -l petstore.csv'
         echo "Performance testing is Completed..."
     }
 }
+
             stage('Analyse Performance Results') {
                         steps{
 			        sh 'pwd'
