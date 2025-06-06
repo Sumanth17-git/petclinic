@@ -24,15 +24,17 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: "springweb-service"
-  namespace: "default"
+  name: springweb-service
+  namespace: default
   labels:
-    app: "springweb"
+    app: springweb
 spec:
-  ports:
-    - port: 9090
-      targetPort: 8080
-      protocol: TCP
+  type: NodePort
   selector:
-    app: "springweb"
-  type: LoadBalancer
+    app: springweb
+  ports:
+    - port: 9090            # The port exposed internally within the cluster
+      targetPort: 8080      # The container port
+      nodePort: 32090       # Optional: can be auto-assigned if omitted (range: 30000–32767)
+      protocol: TCP
+
