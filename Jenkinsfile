@@ -62,7 +62,7 @@ pipeline {
 			    echo "Performance testing is started ..."
 			    sh 'ls -ltr'
 			    sh 'pwd'
-			    sh '/home/sumanth_suman17/apache-jmeter-5.6.3/bin/jmeter -n -t /home/sumanth_suman17/petstore.jmx -l petstore.csv'
+			    sh '/home/sumanth_suman17/apache-jmeter-5.6.3/bin/jmeter -n -t /home/sumanth_suman17/petstore_latest.jmx -l petstore.csv'
                              echo "Performance testing is Completed..."
 		    }
 	    }
